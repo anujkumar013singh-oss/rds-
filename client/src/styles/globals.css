@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --blue:        #00BFFF;
+  --blue-hover:  #0099CC;
+  --blue-glow:   rgba(0, 191, 255, 0.1);
+  --black:       #000000;
+  --surface:     #FFFFFF;
+  --white:       #000000;
+  --muted:       #4B5563;
+  --border:      rgba(0, 191, 255, 0.1);
+  --font-display: 'Anta', sans-serif;
+  --font-body:   'Outfit', sans-serif;
+  --font-ubuntu: 'Ubuntu', sans-serif;
+  --font-logo:   'Krona One', sans-serif;
+  --font-mono:   'JetBrains Mono', monospace;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+body {
+  background: #FFFFFF;
+  color: #000000;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #f3f4f6; }
+::-webkit-scrollbar-thumb { background: #00BFFF; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #0099CC; }
+
+/* Selection */
+::selection {
+  background: rgba(0, 191, 255, 0.3);
+  color: #fff;
+}
+
+/* Blue pill tag */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border: 1px solid rgba(0, 191, 255, 0.4);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--blue);
+  font-family: var(--font-body);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Service card hover border accent */
+.service-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--blue);
+  transition: width 0.4s ease;
+}
+
+.service-card:hover::before {
+  width: 100%;
+}
+
+/* Glow effect for buttons */
+.btn-glow:hover {
+  box-shadow: 0 0 24px rgba(0, 191, 255, 0.35), 0 4px 16px rgba(0, 191, 255, 0.2);
+}
+
+/* Container */
+.container-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 640px) {
+  .container-main {
+    padding: 0 16px;
+  }
+}
+
+/* Floating animation for particles */
+@keyframes floatA {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  33% { transform: translate(12px, -18px) scale(1.1); opacity: 0.8; }
+  66% { transform: translate(-8px, 10px) scale(0.9); opacity: 0.4; }
+}
+@keyframes floatB {
+  0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+  50% { transform: translate(-14px, -22px); opacity: 0.7; }
+}
+@keyframes floatC {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+  40% { transform: translate(16px, 12px) rotate(45deg); opacity: 0.6; }
+  80% { transform: translate(-6px, -8px) rotate(-20deg); opacity: 0.35; }
+}
+
+.particle-a { animation: floatA 7s ease-in-out infinite; }
+.particle-b { animation: floatB 9s ease-in-out infinite; }
+.particle-c { animation: floatC 11s ease-in-out infinite; }
+.particle-d { animation: floatA 6s ease-in-out infinite reverse; }
+
+/* Star rating */
+.star-filled {
+  fill: var(--blue);
+  color: var(--blue);
+}
+
+/* Hamburger animation */
+.ham-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.ham-open .ham-line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.ham-open .ham-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.ham-open .ham-line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Form inputs on white card */
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: var(--font-body);
+  color: #1a1a1a;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
+  background: #fff;
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+  font-family: var(--font-body);
+  letter-spacing: 0.01em;
+}
