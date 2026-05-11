@@ -1,7 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
-import axios from 'axios'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
 import { motion } from 'framer-motion'
 
 const services = [
@@ -59,13 +57,8 @@ const contactInfo = [
   },
 ]
 
-const initialForm = { fullName: '', phone: '', company: '', city: '', email: '', service: '', requirement: '' }
-
 export default function Contact() {
   const sectionRef = useRef(null)
-  const [form, setForm] = useState(initialForm)
-  const [status, setStatus] = useState('idle') // idle | loading | success | error
-  const [slowServer, setSlowServer] = useState(false)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -82,34 +75,6 @@ export default function Contact() {
     }, sectionRef)
     return () => ctx.revert()
   }, [])
-
-  const handleChange = (e) => {
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
-  }
-
-  const handleSubmit = async () => {
-    if (!form.fullName || !form.phone || !form.email || !form.service) {
-      setStatus('validation')
-      return
-    }
-    setStatus('loading')
-    setSlowServer(false)
-
-    // Render cold start warning after 8s
-    const slowTimer = setTimeout(() => setSlowServer(true), 8000)
-
-    try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, form, { timeout: 60000 })
-      clearTimeout(slowTimer)
-      setStatus('success')
-      setForm(initialForm)
-      setSlowServer(false)
-    } catch {
-      clearTimeout(slowTimer)
-      setStatus('error')
-      setSlowServer(false)
-    }
-  }
 
   return (
     <section id="contact" ref={sectionRef} style={{ background: '#FFFFFF', padding: '100px 0' }}>
@@ -190,124 +155,86 @@ export default function Contact() {
             padding: 40,
             boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.05)',
           }}>
-            {status === 'success' ? (
-              <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-                <div style={{
-                  width: 64, height: 64, borderRadius: '50%',
-                  background: 'rgba(0,191,255,0.1)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  margin: '0 auto 20px',
-                }}>
-                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#00BFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 14l6 6 12-12"/>
-                  </svg>
+            <form action="https://formsubmit.co/rdsgrouphire@gmail.com" method="POST">
+              {/* FormSubmit Configuration */}
+              <input type="hidden" name="_subject" value="New Inquiry - RDS Group" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              {/* Honeypot to prevent spam */}
+              <input type="text" name="_honey" style={{ display: 'none' }} />
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
+                <div>
+                  <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your Name <span style={{ color: '#00BFFF' }}>*</span></label>
+                  <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="text" name="fullName" required placeholder="Your Name" />
                 </div>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 24, color: '#000', margin: '0 0 8px' }}>Sent!</h3>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: '#4B5563', margin: 0 }}>
-                  We will contact you within 2 business hours.
-                </p>
+                <div>
+                  <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your Phone <span style={{ color: '#00BFFF' }}>*</span></label>
+                  <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="tel" name="phone" required placeholder="Your Phone" />
+                </div>
+                <div>
+                  <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your Company</label>
+                  <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="text" name="company" placeholder="Your Company" />
+                </div>
+                <div>
+                  <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your City</label>
+                  <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="text" name="city" placeholder="Your City" />
+                </div>
               </div>
-            ) : (
-              <>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
-                  <div>
-                    <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your Name <span style={{ color: '#00BFFF' }}>*</span></label>
-                    <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="text" name="fullName" value={form.fullName} onChange={handleChange} placeholder="Your Name" />
-                  </div>
-                  <div>
-                    <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your Phone <span style={{ color: '#00BFFF' }}>*</span></label>
-                    <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="Your Phone" />
-                  </div>
-                  <div>
-                    <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your Company</label>
-                    <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="text" name="company" value={form.company} onChange={handleChange} placeholder="Your Company" />
-                  </div>
-                  <div>
-                    <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your City</label>
-                    <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="text" name="city" value={form.city} onChange={handleChange} placeholder="Your City" />
-                  </div>
-                </div>
 
-                <div style={{ marginBottom: 20 }}>
-                  <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your Email <span style={{ color: '#00BFFF' }}>*</span></label>
-                  <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="email" name="email" value={form.email} onChange={handleChange} placeholder="Your Email" />
-                </div>
+              <div style={{ marginBottom: 20 }}>
+                <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your Email <span style={{ color: '#00BFFF' }}>*</span></label>
+                <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="email" name="email" required placeholder="Your Email" />
+              </div>
 
-                <div style={{ marginBottom: 20 }}>
-                  <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Service Required <span style={{ color: '#00BFFF' }}>*</span></label>
-                  <select className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%', appearance: 'none', cursor: 'pointer' }} name="service" value={form.service} onChange={handleChange}>
-                    <option value="" style={{ background: '#FFFFFF' }}>Select a service...</option>
-                    {services.map((s) => (
-                      <option key={s} value={s} style={{ background: '#FFFFFF' }}>{s}</option>
-                    ))}
-                  </select>
-                </div>
+              <div style={{ marginBottom: 20 }}>
+                <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Service Required <span style={{ color: '#00BFFF' }}>*</span></label>
+                <select className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%', appearance: 'none', cursor: 'pointer' }} name="service" required>
+                  <option value="">Select a service...</option>
+                  {services.map((s) => (
+                    <option key={s} value={s}>{s}</option>
+                  ))}
+                </select>
+              </div>
 
-                <div style={{ marginBottom: 28 }}>
-                  <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Tell us your requirement</label>
-                  <textarea className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%', height: 120, resize: 'vertical' }} name="requirement" value={form.requirement} onChange={handleChange}
-                    placeholder="Briefly describe your HR challenge or requirement..." />
-                </div>
+              <div style={{ marginBottom: 28 }}>
+                <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Tell us your requirement</label>
+                <textarea className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%', height: 120, resize: 'vertical' }} name="requirement"
+                  placeholder="Briefly describe your HR challenge or requirement..." />
+              </div>
 
-                <motion.button
-                  onClick={handleSubmit}
-                  disabled={status === 'loading'}
-                  className="btn-glow"
-                  style={{
-                    width: '100%',
-                    padding: '16px',
-                    background: '#00BFFF',
-                    borderRadius: 14,
-                    color: '#000',
-                    fontWeight: 700,
-                    fontSize: 16,
-                    fontFamily: 'var(--font-body)',
-                    border: 'none',
-                    cursor: status === 'loading' ? 'not-allowed' : 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 10,
-                    opacity: status === 'loading' ? 0.7 : 1,
-                  }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {status === 'loading' ? 'Sending...' : 'Send Inquiry'}
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                  </svg>
-                </motion.button>
+              <motion.button
+                type="submit"
+                className="btn-glow"
+                style={{
+                  width: '100%',
+                  padding: '16px',
+                  background: '#00BFFF',
+                  borderRadius: 14,
+                  color: '#000',
+                  fontWeight: 700,
+                  fontSize: 16,
+                  fontFamily: 'var(--font-body)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 10,
+                }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Send Inquiry
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+              </motion.button>
 
-                {/* Validation error */}
-                {status === 'validation' && (
-                  <div style={{ marginBottom: 16, padding: '10px 14px', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 8,
-                    fontFamily: 'var(--font-body)', fontSize: 14, color: '#dc2626' }}>
-                    Please fill in all required fields (Name, Phone, Email, Service).
-                  </div>
-                )}
-
-                {/* Error state */}
-                {status === 'error' && (
-                  <div style={{ marginBottom: 16, padding: '10px 14px', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 8,
-                    fontFamily: 'var(--font-body)', fontSize: 14, color: '#dc2626' }}>
-                    Something went wrong. Please call us directly at +91 63899 00496.
-                  </div>
-                )}
-
-                {/* Slow server warning */}
-                {slowServer && status === 'loading' && (
-                  <div style={{ marginBottom: 16, padding: '10px 14px', background: '#fffbeb', border: '1px solid #fde68a', borderRadius: 8,
-                    fontFamily: 'var(--font-body)', fontSize: 14, color: '#92400e' }}>
-                    Our server is waking up — this can take up to 30 seconds on first contact. Please wait...
-                  </div>
-                )}
-
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: '#9ca3af', textAlign: 'center', marginTop: 12, marginBottom: 0 }}>
-                  Your details are private. No spam, no third-party sharing.
-                </p>
-              </>
-            )}
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: '#9ca3af', textAlign: 'center', marginTop: 12, marginBottom: 0 }}>
+                Your details are private. No spam, no third-party sharing.
+              </p>
+            </form>
           </div>
         </div>
       </div>

@@ -118,7 +118,7 @@ export default function AboutUsSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="w-full py-24 px-4 bg-transparent text-white overflow-hidden relative"
+      className="w-full py-24 px-4 bg-transparent text-black overflow-hidden relative"
     >
       {/* Decorative background elements */}
       <motion.div
@@ -146,7 +146,7 @@ export default function AboutUsSection() {
             <ShieldCheck className="w-4 h-4" />
             OUR INSTITUTIONAL VALUES
           </motion.span>
-          <h2 className="text-4xl md:text-5xl font-display font-medium mb-4 text-center text-white">A Pillar of Reliability</h2>
+          <h2 className="text-4xl md:text-5xl font-display font-medium mb-4 text-center text-black">A Pillar of Reliability</h2>
           <motion.div
             className="w-24 h-1 bg-blue-400"
             initial={{ width: 0 }}
@@ -155,7 +155,7 @@ export default function AboutUsSection() {
           ></motion.div>
         </motion.div>
 
-        <motion.p className="text-center max-w-2xl mx-auto mb-16 text-gray-300 font-body" variants={itemVariants}>
+        <motion.p className="text-center max-w-2xl mx-auto mb-16 text-gray-800 font-body" variants={itemVariants}>
           With over a decade of operational excellence, RDS Group has established itself as a premier HR institution, 
           dedicated to fostering professional growth and organizational stability across the nation.
         </motion.p>
@@ -281,27 +281,27 @@ function ServiceItem({ icon, secondaryIcon, title, description, variants, delay,
         transition={{ duration: 0.6, delay: delay + 0.2 }}
       >
         <motion.div
-          className="relative w-14 h-14 flex items-center justify-center rounded-2xl bg-white/[0.05] border border-white/10 group-hover:border-white/30 group-hover:bg-white/10 transition-all duration-500 overflow-hidden"
+          className="relative w-14 h-14 flex items-center justify-center rounded-2xl bg-black/[0.05] border border-black/10 group-hover:border-blue-400 group-hover:bg-blue-50 transition-all duration-500 overflow-hidden"
           whileHover={{ scale: 1.1 }}
         >
           {/* Animated background glow */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
-          <div className="text-white group-hover:text-blue-400 transition-colors duration-300 relative z-10 scale-110">
+          <div className="text-black group-hover:text-blue-500 transition-colors duration-300 relative z-10 scale-110">
             {icon}
           </div>
           
           {/* Decorative corner icon */}
-          <div className="absolute -top-1 -right-1 opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 text-white">
+          <div className="absolute -top-1 -right-1 opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 text-black">
             {secondaryIcon}
           </div>
         </motion.div>
-        <h3 className="text-2xl font-display font-semibold text-white group-hover:text-blue-400 transition-colors duration-300 tracking-tight">
+        <h3 className="text-2xl font-display font-semibold text-black group-hover:text-blue-500 transition-colors duration-300 tracking-tight">
           {title}
         </h3>
       </motion.div>
       <motion.p
-        className="text-base text-gray-300 font-body leading-relaxed pl-16 group-hover:text-gray-200 transition-colors duration-300"
+        className="text-base text-gray-700 font-body leading-relaxed pl-16 group-hover:text-gray-900 transition-colors duration-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: delay + 0.4 }}
@@ -336,14 +336,14 @@ function StatCounter({ icon, value, label, suffix, delay }) {
 
   return (
     <motion.div
-      className="flex flex-col items-center justify-center relative p-8 bg-white/[0.05] rounded-3xl border border-white/10 group hover:bg-white/[0.08] hover:shadow-2xl hover:shadow-blue-400/10 transition-all duration-500"
+      className="flex flex-col items-center justify-center relative p-8 bg-black/[0.02] rounded-3xl border border-black/5 group hover:bg-white hover:shadow-2xl hover:shadow-blue-400/10 transition-all duration-500"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false }}
     >
       {/* Icon with refined styling */}
       <motion.div 
-        className="w-12 h-12 flex items-center justify-center rounded-2xl bg-blue-400/20 text-white mb-6 group-hover:scale-110 transition-transform duration-500"
+        className="w-12 h-12 flex items-center justify-center rounded-2xl bg-blue-400/10 text-black mb-6 group-hover:scale-110 transition-transform duration-500"
         variants={{
           hidden: { opacity: 0, scale: 0.8 },
           visible: { opacity: 1, scale: 1, transition: { duration: 0.5, delay } }
@@ -356,7 +356,7 @@ function StatCounter({ icon, value, label, suffix, delay }) {
       <div className="relative flex flex-col items-center">
         <motion.div 
           ref={countRef} 
-          className="text-4xl md:text-5xl font-display font-bold flex items-center text-white mb-2"
+          className="text-4xl md:text-5xl font-display font-bold flex items-center text-black mb-2"
           variants={{
             hidden: { opacity: 0, y: 20 },
             visible: { 
@@ -366,10 +366,10 @@ function StatCounter({ icon, value, label, suffix, delay }) {
             }
           }}
         >
-          <motion.span className="text-white">
+          <motion.span className="text-black">
             {displayValue}
           </motion.span>
-          <motion.span className="text-blue-400 ml-1 text-2xl md:text-3xl">
+          <motion.span className="text-blue-500 ml-1 text-2xl md:text-3xl">
             {suffix}
           </motion.span>
         </motion.div>
@@ -377,7 +377,7 @@ function StatCounter({ icon, value, label, suffix, delay }) {
 
       {/* Label with clean professional styling */}
       <motion.p 
-        className="text-gray-300 font-body text-xs md:text-sm font-semibold uppercase tracking-wider text-center"
+        className="text-gray-600 font-body text-xs md:text-sm font-semibold uppercase tracking-wider text-center"
         variants={{
           hidden: { opacity: 0 },
           visible: { 

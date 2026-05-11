@@ -57,7 +57,7 @@ export default function Navbar() {
           left: 0,
           right: 0,
           zIndex: 9999,
-          background: 'transparent',
+          background: 'rgba(255, 255, 255, 0.1)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           borderBottom: '1px solid rgba(0,191,255,0.15)',
@@ -93,12 +93,12 @@ export default function Navbar() {
                     fontFamily: 'var(--font-body)',
                     fontSize: 15,
                     fontWeight: 500,
-                    color: isActive ? '#00BFFF' : '#FFFFFF',
+                    color: isActive ? '#00BFFF' : '#000000',
                     textDecoration: 'none',
                     transition: 'color 0.3s ease',
                   }}
                   onMouseEnter={(e) => { if (!isActive) e.target.style.color = '#00BFFF' }}
-                  onMouseLeave={(e) => { if (!isActive) e.target.style.color = '#FFFFFF' }}
+                  onMouseLeave={(e) => { if (!isActive) e.target.style.color = '#000000' }}
                 >
                   {link.label}
                 </a>
@@ -138,11 +138,11 @@ export default function Navbar() {
               aria-label="Toggle menu"
             >
               <span className={`ham-line ${menuOpen ? 'ham-open' : ''}`}
-                style={{ display: 'block', width: 22, height: 2, background: '#fff', borderRadius: 1,
+                style={{ display: 'block', width: 22, height: 2, background: '#000', borderRadius: 1,
                   transition: 'all 0.3s', transform: menuOpen ? 'translateY(6px) rotate(45deg)' : 'none' }} />
-              <span style={{ display: 'block', width: 22, height: 2, background: '#fff', borderRadius: 1,
+              <span style={{ display: 'block', width: 22, height: 2, background: '#000', borderRadius: 1,
                 transition: 'all 0.3s', opacity: menuOpen ? 0 : 1 }} />
-              <span style={{ display: 'block', width: 22, height: 2, background: '#fff', borderRadius: 1,
+              <span style={{ display: 'block', width: 22, height: 2, background: '#000', borderRadius: 1,
                 transition: 'all 0.3s', transform: menuOpen ? 'translateY(-6px) rotate(-45deg)' : 'none' }} />
             </button>
           </div>
