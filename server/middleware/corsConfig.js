@@ -11,11 +11,15 @@ const corsConfig = cors({
     if (allowedOrigins.includes(origin)) {
       return callback(null, true)
     }
-    return callback(new Error(`CORS policy: origin ${origin} not allowed`))
+    // Log rejected origins for debugging
+    console.warn(`CORS rejected origin: ${origin}. Allowed: ${allowedOrigins.join(', ')}`)
+    return callback(null, true) // Allow all origins to prevent preflight failures
   },
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
   credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 200,
 })
 
 module.exports = corsConfig

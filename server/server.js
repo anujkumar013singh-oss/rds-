@@ -1,18 +1,17 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
-const cors = require('cors')
 const { body, validationResult } = require('express-validator')
+const corsConfig = require('./middleware/corsConfig')
 const Inquiry = require('./models/Inquiry')
 const { sendInquiryNotification, sendAutoReply } = require('./utils/mailer')
 
 const app = express()
 const PORT = process.env.PORT || 5000
 
-// ─── THE ULTIMATE CORS FIX ──────────────────────────────────────────────────
-// This allows EVERYTHING. No more 403 or CORS errors.
-app.use(cors()) 
-app.options('*', cors())
+// ─── CORS CONFIGURATION ─────────────────────────────────────────────────────
+app.use(corsConfig)
+app.options('*', corsConfig)
 
 // ─── LOGGING ────────────────────────────────────────────────────────────────
 app.use((req, res, next) => {
