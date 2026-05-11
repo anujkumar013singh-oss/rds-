@@ -2,20 +2,22 @@ services:
   - type: web
     name: rds-group-client
     env: node
-    buildCommand: cd client && npm install && npm run build
-    startCommand: cd client && npm run preview
+    workingDir: client
+    buildCommand: npm install && npm run build
+    startCommand: npm run preview
     envVars:
       - key: NODE_ENV
         value: production
       - key: VITE_API_URL
         fromSecret: vite_api_url
-    staticPublishPath: client/dist
+    staticPublishPath: dist
 
   - type: web
     name: rds-group-server
     env: node
-    buildCommand: cd server && npm install
-    startCommand: cd server && npm start
+    workingDir: server
+    buildCommand: npm install
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
