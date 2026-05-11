@@ -173,8 +173,8 @@ export default function Hero() {
           </div>
 
           {/* Right column — visual */}
-          <div className="hero-visual hidden md:flex" style={{ opacity: 0, position: 'relative', justifyContent: 'center', alignItems: 'center', height: 480 }}>
-            <div style={{ position: 'relative', width: '100%', height: '100%', maxWidth: 500 }}>
+          <div className="hero-visual hidden md:flex" style={{ opacity: 0, position: 'relative', justifyContent: 'center', alignItems: 'center', height: 'auto', minHeight: 480 }}>
+            <div style={{ position: 'relative', width: '100%', height: 'auto', maxWidth: 650, aspectRatio: '1/1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               {/* Image with decorative elements */}
               <div style={{
                 position: 'relative',

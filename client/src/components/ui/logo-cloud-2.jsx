@@ -12,12 +12,14 @@ export function LogoCloud({ className, ...props }) {
     >
       <div className="-translate-x-1/2 -top-px pointer-events-none absolute left-1/2 w-screen border-t border-black/10" />
 
+      {/* Slot 1: Flipkart */}
       <LogoCard
         className="relative border-r border-b border-black/10 bg-black/[0.02]"
-        logo={{
-          src: "https://e7.pngegg.com/pngimages/355/980/png-clipart-logo-brand-flipkart-computer-icons-logo-for-online-shop-text-logo-thumbnail.png",
-          alt: "Flipkart Logo",
+        logo={{ 
+          src: "https://ik.imagekit.io/vxqem8zrj/Flipkart_logo__2026_.svg-removebg-preview.png", 
+          alt: "Flipkart Logo" 
         }}
+        imgClassName="h-20 md:h-24" // Significantly increased size
       >
         <PlusIcon
           className="-right-[12.5px] -bottom-[12.5px] absolute z-10 size-6 text-ali"
@@ -25,20 +27,24 @@ export function LogoCloud({ className, ...props }) {
         />
       </LogoCard>
 
+      {/* Slot 2: Swiggy */}
       <LogoCard
         className="border-b border-r border-black/10"
-        logo={{
-          src: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Swiggy_Text_Logo.png",
-          alt: "Swiggy Logo",
+        logo={{ 
+          src: "https://ik.imagekit.io/vxqem8zrj/Swiggy_Logo_2024-removebg-preview.png", 
+          alt: "Swiggy Logo" 
         }}
+        imgClassName="h-16 md:h-20"
       />
 
+      {/* Slot 3: Samsung */}
       <LogoCard
         className="relative border-r border-b border-black/10 md:bg-black/[0.02]"
         logo={{
-          src: "https://www.pngall.com/wp-content/uploads/17/Myntra-Logo-Minimalist-Style-PNG-thumb.png",
-          alt: "Myntra Logo",
+          src: "https://ik.imagekit.io/vxqem8zrj/Samsung_logo_blue-removebg-preview.png",
+          alt: "Samsung Logo",
         }}
+        imgClassName="h-14 md:h-18"
       >
         <PlusIcon
           className="-right-[12.5px] -bottom-[12.5px] absolute z-10 size-6 text-ali"
@@ -50,20 +56,24 @@ export function LogoCloud({ className, ...props }) {
         />
       </LogoCard>
 
+      {/* Slot 4: Mahindra */}
       <LogoCard
         className="relative border-b border-black/10 bg-black/[0.02] md:bg-transparent"
         logo={{
-          src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Zepto_Logo.svg/3840px-Zepto_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
-          alt: "Zepto Logo",
+          src: "https://ik.imagekit.io/vxqem8zrj/Mahindra-Logo-2012-removebg-preview.png",
+          alt: "Mahindra Logo",
         }}
+        imgClassName="h-16 md:h-20"
       />
 
+      {/* Slot 5: Amazon */}
       <LogoCard
         className="relative border-r border-b border-black/10 bg-black/[0.02] md:border-b-0 md:bg-transparent"
         logo={{
-          src: "https://www.clipartmax.com/png/middle/439-4391278_farm-logo-photo-mahindra-logo-png.png",
-          alt: "Mahindra Logo",
+          src: "https://ik.imagekit.io/vxqem8zrj/amazon-logo-amazon-icon-free-free-vector-removebg-preview.png",
+          alt: "Amazon Logo",
         }}
+        imgClassName="h-20 md:h-24" // Significantly increased size
       >
         <PlusIcon
           className="-right-[12.5px] -bottom-[12.5px] md:-left-[12.5px] absolute z-10 size-6 md:hidden text-ali"
@@ -71,28 +81,34 @@ export function LogoCloud({ className, ...props }) {
         />
       </LogoCard>
 
+      {/* Slot 6: Myntra */}
       <LogoCard
         className="border-b border-black/10 bg-transparent md:border-r md:border-b-0 md:bg-black/[0.02]"
-        logo={{
-          src: "https://p7.hiclipart.com/preview/429/554/533/lava-international-noida-company-business-lava-a97-others.jpg",
-          alt: "Lava Logo",
+        logo={{ 
+          src: "https://ik.imagekit.io/vxqem8zrj/eab6e12c5c11b94f0814c1b85dc31290-removebg-preview.png", 
+          alt: "Myntra Logo" 
         }}
+        imgClassName="h-16 md:h-20"
       />
 
+      {/* Slot 7: Zepto */}
       <LogoCard
         className="border-r border-black/10"
-        logo={{
-          src: "https://img.favpng.com/4/20/3/logo-samsung-electronics-organization-samsung-galaxy-png-favpng-wsWzg4CPd3KsEUdZza0vdijFb.jpg",
-          alt: "Samsung Logo",
+        logo={{ 
+          src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Zepto_Logo.svg/3840px-Zepto_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail", 
+          alt: "Zepto Logo" 
         }}
+        imgClassName="h-14 md:h-18"
       />
 
+      {/* Slot 8: Lava */}
       <LogoCard
         className="bg-black/[0.02]"
-        logo={{
-          src: "https://img.favpng.com/9/0/3/swiggy-office-swiggy-corporate-online-food-ordering-discounts-and-allowances-coupon-png-favpng-r4Twb7Fvm5TViB9NBcgENDcAr_t.jpg",
-          alt: "Swiggy Logo",
+        logo={{ 
+          src: "https://ik.imagekit.io/vxqem8zrj/images-removebg-preview.png", 
+          alt: "Lava Logo" 
         }}
+        imgClassName="h-20 md:h-24" // Significantly increased size
       />
 
       <div className="-translate-x-1/2 -bottom-px pointer-events-none absolute left-1/2 w-screen border-b border-black/10" />
@@ -100,22 +116,27 @@ export function LogoCloud({ className, ...props }) {
   );
 }
 
-function LogoCard({ logo, className, children, ...props }) {
+function LogoCard({ logo, className, imgClassName, children, ...props }) {
   return (
     <div
       className={cn(
-        "flex items-center justify-center bg-transparent px-4 py-8 md:p-8",
+        "flex items-center justify-center bg-transparent px-4 py-10 md:p-12 min-h-[140px] md:min-h-[160px]",
         className
       )}
       {...props}
     >
-      <img
-        alt={logo.alt}
-        className="pointer-events-none h-4 select-none md:h-5 brightness-0 opacity-60 hover:opacity-100 transition-opacity"
-        height={logo.height || "auto"}
-        src={logo.src}
-        width={logo.width || "auto"}
-      />
+      {logo.src ? (
+        <img
+          alt={logo.alt}
+          className={cn(
+            "pointer-events-none w-auto object-contain select-none opacity-100 transition-all duration-300",
+            imgClassName || "h-16 md:h-20" // Default larger size
+          )}
+          src={logo.src}
+        />
+      ) : (
+        <div className="h-16 w-full" />
+      )}
       {children}
     </div>
   );

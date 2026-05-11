@@ -89,15 +89,16 @@ export default function Founders() {
           <motion.div variants={itemVariants}>
             <ProfileCard
               name="Rishi Agarwal"
-              title="Founder & CEO - Driving strategic vision and organizational excellence at RDS Group."
+              role="Founder & CEO"
+              title="Driving strategic vision and organizational excellence at RDS Group with a focus on institutional growth."
               avatarUrl="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=881,fit=crop,trim=134.75;0;134.75;0/YX4xBo8359sPQQrD/r-AzGNpnVJEyCq6j5k.jpg"
-              backgroundUrl="https://img.magnific.com/free-photo/observation-urban-building-business-steel_1127-2397.jpg?semt=ais_hybrid&w=740&q=80"
-              likes={150}
-              posts={12}
-              views={2500}
-              instagramUrl="https://instagram.com"
-              twitterUrl="https://twitter.com"
-              threadsUrl="https://threads.net"
+              backgroundUrl="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop"
+              stat1Value="12+"
+              stat1Label="Cities Covered"
+              stat2Value="1000+"
+              stat2Label="Placements"
+              stat3Value="Jhansi"
+              stat3Label="Mainly Active"
             />
           </motion.div>
 
@@ -105,15 +106,16 @@ export default function Founders() {
           <motion.div variants={itemVariants}>
             <ProfileCard
               name="Vikash Gupta"
-              title="Co-Founder & Director - Leading operations and client relations with expertise."
+              role="Co-Founder"
+              title="Leading operations and client relations with expertise, ensuring seamless HR delivery across regions."
               avatarUrl="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=881,fit=crop,trim=227.0967741935484;0;227.0967741935484;0/YX4xBo8359sPQQrD/v-A85Vn3ByqnTyxpEK.jpg"
               backgroundUrl="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop"
-              likes={120}
-              posts={10}
-              views={1800}
-              instagramUrl="https://instagram.com"
-              twitterUrl="https://twitter.com"
-              threadsUrl="https://threads.net"
+              stat1Value="6"
+              stat1Label="Cities Covered"
+              stat2Value="500+"
+              stat2Label="Placements"
+              stat3Value="Delhi NCR"
+              stat3Label="Mainly Active"
             />
           </motion.div>
         </div>
