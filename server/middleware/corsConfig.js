@@ -1,59 +1,72 @@
 const cors = require('cors')
 
+/**
+ * CORS Configuration for Express.js
+ *
+ * This middleware handles:
+ * ✓ Specific origin whitelist (production-safe)
+ * ✓ Preflight OPTIONS requests
+ * ✓ Credentials/cookies support
+ * ✓ Proper header forwarding
+ */
+
 // Parse allowed origins from environment variable
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
   .split(',')
   .map((o) => o.trim())
   .filter((o) => o.length > 0)
 
-// Add default origins for development
-const defaultOrigins = [
-  'http://localhost:5173',
-  'http://localhost:3000',
-  'http://127.0.0.1:5173',
-  'http://127.0.0.1:3000',
-]
+// Development origins
+const devOrigins = ['http://localhost:5173', 'http://localhost:3000']
 
 // Combine all allowed origins
-const allOrigins = [...new Set([...allowedOrigins, ...defaultOrigins])]
+const allAllowedOrigins = [...new Set([...allowedOrigins, ...devOrigins])]
 
-console.log('🔐 CORS Configuration:')
-console.log('   Allowed Origins:', allOrigins)
-console.log('   Environment ALLOWED_ORIGINS:', process.env.ALLOWED_ORIGINS || 'NOT SET')
-
+// CORS options - Production-safe, no wildcard
 const corsOptions = {
+  // Validate origin against whitelist
   origin: (origin, callback) => {
-    // Always allow requests with no origin (server-to-server, Postman, health checks)
+    // Allow requests without origin (server-to-server, Postman)
     if (!origin) {
       return callback(null, true)
     }
 
-    // Check if origin is in allowed list
-    if (allOrigins.includes(origin)) {
+    // Check if origin is in the whitelist
+    if (allAllowedOrigins.includes(origin)) {
+      console.log(`✅ CORS allowed: ${origin}`)
       return callback(null, true)
     }
 
-    // Fallback: Allow all origins (for production compatibility)
-    console.log(`✅ CORS accepting: ${origin}`)
-    return callback(null, true)
+    // Reject origins not in whitelist
+    console.warn(`❌ CORS rejected: ${origin}`)
+    return callback(new Error('Not allowed by CORS'))
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD'],
-  allowedHeaders: [
-    'Content-Type',
-    'Authorization',
-    'Accept',
-    'X-Requested-With',
-    'Origin',
-  ],
-  exposedHeaders: ['Content-Length', 'Content-Type'],
+
+  // HTTP methods allowed
+  methods: ['GET', 'POST', 'OPTIONS'],
+
+  // Headers that can be sent by the client
+  allowedHeaders: ['Content-Type', 'Authorization'],
+
+  // Headers that the client can read from the response
+  exposedHeaders: [],
+
+  // Allow credentials (cookies, auth headers)
   credentials: true,
+
+  // How to handle OPTIONS requests
   preflightContinue: false,
+
+  // Success status for OPTIONS requests (200 or 204)
   optionsSuccessStatus: 200,
+
+  // Cache preflight response for 24 hours
   maxAge: 86400,
 }
 
-const corsConfig = cors(corsOptions)
+console.log('🔐 CORS Configuration:')
+console.log('   Allowed Origins:', allAllowedOrigins)
+console.log('   Credentials: true')
+console.log('   Preflight Cache: 24 hours')
 
-// Export both the middleware and options for flexibility
-module.exports = corsConfig
-module.exports.corsOptions = corsOptions
+module.exports = cors(corsOptions)
