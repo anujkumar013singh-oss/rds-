@@ -15,8 +15,8 @@ export function LogoCloud({ className, ...props }) {
       <LogoCard
         className="relative border-r border-b border-black/10 bg-black/[0.02]"
         logo={{
-          src: "https://svgl.app/library/nvidia-wordmark-light.svg",
-          alt: "Nvidia Logo",
+          src: "https://e7.pngegg.com/pngimages/355/980/png-clipart-logo-brand-flipkart-computer-icons-logo-for-online-shop-text-logo-thumbnail.png",
+          alt: "Flipkart Logo",
         }}
       >
         <PlusIcon
@@ -28,16 +28,16 @@ export function LogoCloud({ className, ...props }) {
       <LogoCard
         className="border-b border-r border-black/10"
         logo={{
-          src: "https://svgl.app/library/supabase_wordmark_light.svg",
-          alt: "Supabase Logo",
+          src: "https://icon2.cleanpng.com/lnd/20241213/pz/74d97a469873774f841633779c982d.webp",
+          alt: "Amazon Logo",
         }}
       />
 
       <LogoCard
         className="relative border-r border-b border-black/10 md:bg-black/[0.02]"
         logo={{
-          src: "https://svgl.app/library/github_wordmark_light.svg",
-          alt: "GitHub Logo",
+          src: "https://www.pngall.com/wp-content/uploads/17/Myntra-Logo-Minimalist-Style-PNG-thumb.png",
+          alt: "Myntra Logo",
         }}
       >
         <PlusIcon
@@ -53,16 +53,16 @@ export function LogoCloud({ className, ...props }) {
       <LogoCard
         className="relative border-b border-black/10 bg-black/[0.02] md:bg-transparent"
         logo={{
-          src: "https://svgl.app/library/openai_wordmark_light.svg",
-          alt: "OpenAI Logo",
+          src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Zepto_Logo.svg/3840px-Zepto_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+          alt: "Zepto Logo",
         }}
       />
 
       <LogoCard
         className="relative border-r border-b border-black/10 bg-black/[0.02] md:border-b-0 md:bg-transparent"
         logo={{
-          src: "https://svgl.app/library/turso-wordmark-light.svg",
-          alt: "Turso Logo",
+          src: "https://www.clipartmax.com/png/middle/439-4391278_farm-logo-photo-mahindra-logo-png.png",
+          alt: "Mahindra Logo",
         }}
       >
         <PlusIcon
@@ -74,24 +74,24 @@ export function LogoCloud({ className, ...props }) {
       <LogoCard
         className="border-b border-black/10 bg-transparent md:border-r md:border-b-0 md:bg-black/[0.02]"
         logo={{
-          src: "https://svgl.app/library/clerk-wordmark-light.svg",
-          alt: "Clerk Logo",
+          src: "https://p7.hiclipart.com/preview/429/554/533/lava-international-noida-company-business-lava-a97-others.jpg",
+          alt: "Lava Logo",
         }}
       />
 
       <LogoCard
         className="border-r border-black/10"
         logo={{
-          src: "https://svgl.app/library/claude-ai-wordmark-icon_light.svg",
-          alt: "Claude AI Logo",
+          src: "https://img.favpng.com/4/20/3/logo-samsung-electronics-organization-samsung-galaxy-png-favpng-wsWzg4CPd3KsEUdZza0vdijFb.jpg",
+          alt: "Samsung Logo",
         }}
       />
 
       <LogoCard
         className="bg-black/[0.02]"
         logo={{
-          src: "https://svgl.app/library/vercel_wordmark.svg",
-          alt: "Vercel Logo",
+          src: "https://img.favpng.com/9/0/3/swiggy-office-swiggy-corporate-online-food-ordering-discounts-and-allowances-coupon-png-favpng-r4Twb7Fvm5TViB9NBcgENDcAr_t.jpg",
+          alt: "Swiggy Logo",
         }}
       />
 
