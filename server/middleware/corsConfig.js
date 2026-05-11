@@ -7,38 +7,53 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
   .filter((o) => o.length > 0)
 
 // Add default origins for development
-const defaultOrigins = ['http://localhost:5173', 'http://localhost:3000']
+const defaultOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'http://127.0.0.1:5173',
+  'http://127.0.0.1:3000',
+]
 
 // Combine all allowed origins
 const allOrigins = [...new Set([...allowedOrigins, ...defaultOrigins])]
 
-console.log('CORS Allowed Origins:', allOrigins)
+console.log('🔐 CORS Configuration:')
+console.log('   Allowed Origins:', allOrigins)
+console.log('   Environment ALLOWED_ORIGINS:', process.env.ALLOWED_ORIGINS || 'NOT SET')
 
-const corsConfig = cors({
+const corsOptions = {
   origin: (origin, callback) => {
-    // Allow requests with no origin (like server-to-server, Postman, health checks)
+    // Always allow requests with no origin (server-to-server, Postman, health checks)
     if (!origin) {
-      console.log('No origin in request - allowing')
       return callback(null, true)
     }
 
     // Check if origin is in allowed list
     if (allOrigins.includes(origin)) {
-      console.log(`CORS allowed for origin: ${origin}`)
       return callback(null, true)
     }
 
-    // Allow all origins as fallback for Render/Vercel deployment
-    console.log(`CORS - allowing all origins including: ${origin}`)
+    // Fallback: Allow all origins (for production compatibility)
+    console.log(`✅ CORS accepting: ${origin}`)
     return callback(null, true)
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Requested-With'],
-  exposedHeaders: ['Content-Length'],
+  allowedHeaders: [
+    'Content-Type',
+    'Authorization',
+    'Accept',
+    'X-Requested-With',
+    'Origin',
+  ],
+  exposedHeaders: ['Content-Length', 'Content-Type'],
   credentials: true,
   preflightContinue: false,
   optionsSuccessStatus: 200,
-  maxAge: 86400, // 24 hours
-})
+  maxAge: 86400,
+}
 
+const corsConfig = cors(corsOptions)
+
+// Export both the middleware and options for flexibility
 module.exports = corsConfig
+module.exports.corsOptions = corsOptions

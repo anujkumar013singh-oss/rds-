@@ -9,9 +9,28 @@ const { sendInquiryNotification, sendAutoReply } = require('./utils/mailer')
 const app = express()
 const PORT = process.env.PORT || 5000
 
-// ─── CORS CONFIGURATION ─────────────────────────────────────────────────────
-app.use(corsConfig)
+// ─── CORS CONFIGURATION - APPLY FIRST ────────────────────────────────────────
+// Handle preflight requests
 app.options('*', corsConfig)
+// Apply CORS to all routes
+app.use(corsConfig)
+
+// ─── EXPLICIT CORS HEADERS AS BACKUP ──────────────────────────────────────────
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS')
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, Accept, X-Requested-With, Origin'
+  )
+  res.header('Access-Control-Allow-Credentials', 'true')
+  res.header('Access-Control-Max-Age', '86400')
+  
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200)
+  }
+  next()
+})
 
 // ─── LOGGING ────────────────────────────────────────────────────────────────
 app.use((req, res, next) => {
