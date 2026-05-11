@@ -166,30 +166,30 @@ export default function Contact() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
                 <div>
                   <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your Name <span style={{ color: '#00BFFF' }}>*</span></label>
-                  <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="text" name="fullName" required placeholder="Your Name" />
+                  <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="text" name="Full Name" required placeholder="Your Name" />
                 </div>
                 <div>
                   <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your Phone <span style={{ color: '#00BFFF' }}>*</span></label>
-                  <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="tel" name="phone" required placeholder="Your Phone" />
+                  <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="tel" name="Phone" required placeholder="Your Phone" />
                 </div>
                 <div>
                   <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your Company</label>
-                  <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="text" name="company" placeholder="Your Company" />
+                  <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="text" name="Company" placeholder="Your Company" />
                 </div>
                 <div>
                   <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your City</label>
-                  <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="text" name="city" placeholder="Your City" />
+                  <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="text" name="City" placeholder="Your City" />
                 </div>
               </div>
 
               <div style={{ marginBottom: 20 }}>
                 <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Your Email <span style={{ color: '#00BFFF' }}>*</span></label>
-                <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="email" name="email" required placeholder="Your Email" />
+                <input className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%' }} type="email" name="Email" required placeholder="Your Email" />
               </div>
 
               <div style={{ marginBottom: 20 }}>
                 <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Service Required <span style={{ color: '#00BFFF' }}>*</span></label>
-                <select className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%', appearance: 'none', cursor: 'pointer' }} name="service" required>
+                <select className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%', appearance: 'none', cursor: 'pointer' }} name="Service" required>
                   <option value="">Select a service...</option>
                   {services.map((s) => (
                     <option key={s} value={s}>{s}</option>
@@ -199,7 +199,7 @@ export default function Contact() {
 
               <div style={{ marginBottom: 28 }}>
                 <label className="form-label" style={{ color: '#000', opacity: 0.8, fontSize: 13, marginBottom: 8, display: 'block' }}>Tell us your requirement</label>
-                <textarea className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%', height: 120, resize: 'vertical' }} name="requirement"
+                <textarea className="form-input" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', padding: '12px 16px', borderRadius: 12, width: '100%', height: 120, resize: 'vertical' }} name="Requirement"
                   placeholder="Briefly describe your HR challenge or requirement..." />
               </div>
 
