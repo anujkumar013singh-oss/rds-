@@ -11,12 +11,14 @@ const navLinks = [
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80)
+    // Scroll listener for active section detection
+    const handleScroll = () => {
+      // Navbar is always transparent with blur, no scroll-based changes needed
+    }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -82,7 +84,6 @@ export default function Navbar() {
             {navLinks.map((link) => {
               const id = link.href.replace('#', '')
               const isActive = activeSection === id
-              const isHeroSection = activeSection === 'hero'
               return (
                 <a
                   key={link.href}
@@ -92,12 +93,12 @@ export default function Navbar() {
                     fontFamily: 'var(--font-body)',
                     fontSize: 15,
                     fontWeight: 500,
-                    color: isActive ? '#00BFFF' : '#000000',
+                    color: isActive ? '#00BFFF' : '#FFFFFF',
                     textDecoration: 'none',
                     transition: 'color 0.3s ease',
                   }}
                   onMouseEnter={(e) => { if (!isActive) e.target.style.color = '#00BFFF' }}
-                  onMouseLeave={(e) => { if (!isActive) e.target.style.color = '#000000' }}
+                  onMouseLeave={(e) => { if (!isActive) e.target.style.color = '#FFFFFF' }}
                 >
                   {link.label}
                 </a>
