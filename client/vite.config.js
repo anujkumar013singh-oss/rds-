@@ -16,5 +16,6 @@ export default defineConfig({
   preview: {
     port: 4173,
     host: true,
+    allowedHosts: ['rds-ygc4.onrender.com', '.onrender.com'],
   },
 })
