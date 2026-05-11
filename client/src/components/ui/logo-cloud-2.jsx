@@ -28,8 +28,8 @@ export function LogoCloud({ className, ...props }) {
       <LogoCard
         className="border-b border-r border-black/10"
         logo={{
-          src: "https://icon2.cleanpng.com/lnd/20241213/pz/74d97a469873774f841633779c982d.webp",
-          alt: "Amazon Logo",
+          src: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Swiggy_Text_Logo.png",
+          alt: "Swiggy Logo",
         }}
       />
 
